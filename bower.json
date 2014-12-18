@@ -6,6 +6,9 @@
   "authors": [
     "simleap <simleap@gmail.com>"
   ],
+  "dependencies": {
+    "jcrop": "0.9.12"
+  },
   "description": "an easy way to crop image as cropping cover image on Google Plus.",
   "keywords": [
     "angular",
@@ -15,5 +18,5 @@
     "cropper",
     "avatar"
   ],
-  "license": "MIT",
+  "license": "MIT"
 }
