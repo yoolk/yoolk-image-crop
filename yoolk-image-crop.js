@@ -5,8 +5,10 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
     restrict: 'AE',
     scope: {
       imageSrc: '@',
-      startx: '@',
-      starty: '@',
+      x: '@',
+      y: '@',
+      x2: '@',
+      y2: '@',
       minWidth: '@',
       minHeight: '@',
       boxWidth: '@',
@@ -14,22 +16,18 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
       result: '='
     },
     link: function(scope, element, attributes) {
+      var showCoords;
       scope.rand = Math.round(Math.random() * 99999);
-
-      // show coords
-      function showCoords(c) {
+      showCoords = function(c) {
         scope.result.x = c.x;
         scope.result.y = c.y;
         scope.result.x2 = c.x2;
         scope.result.y2 = c.y2;
         scope.result.w = c.w;
         scope.result.h = c.h;
-        scope.$apply();
-
+        return scope.$apply();
       };
-
-      // apply Jcrop
-      element.Jcrop({
+      return element.Jcrop({
         onChange: showCoords,
         minSize: [scope.minWidth, scope.minHeight],
         boxWidth: scope.boxWidth,
@@ -39,10 +37,9 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
       }, function() {
         var jcrop_api;
         jcrop_api = this;
-        jcrop_api.animateTo([0, 0, scope.minWidth, scope.minHeight]);
-        return
+        return jcrop_api.animateTo([scope.x, scope.y, scope.x2, scope.y2]);
       });
-      return
     }
   };
 });
+
