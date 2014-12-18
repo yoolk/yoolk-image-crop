@@ -18,17 +18,26 @@ AngularJS Directive which will allow you to crop an image using [Jcrop](https://
 
 ## Parameters
 
-* width (string) - the width of the cropper
-* height (string) - the height of the cropper
-* shape (string) - the cropping guideline shape (circle/square)
-* result (bound string) - the variable which will have the resulting data uri bound to it
-* step (bound integer) - the variable which dictates which step the user will see (used for resetting purposes)
+* x (integer) - start X
+* y (integer) - start Y
+* x2 (integer) - end X
+* y2 (integer) - end Y
+* minWidth (integer) - the width of the cropper
+* minHeight (integer) - the height of the cropper
+* boxWidth (integer) - the width of image box
+* boxHeight (integer) - the height of image box
+* imageSrc (string) - can use with data uri or image url
+* result (object {}) - the variable which will have the resulting data uri bound to it
 
 ### Example markup
 ```html
 <yoolk-image-crop
-  data-min-width= '480'
-  data-min-height= '320'
+  data-x='200'
+  data-y='200'
+  data-x2='400'
+  data-y2='400'
+  data-min-width= '200'
+  data-min-height= '200'
   boxWidth= '800'
   boxHeight= '600'
   data-image-src="imageSrc"
