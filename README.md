@@ -38,8 +38,8 @@ AngularJS Directive which will allow you to crop an image using [Jcrop](https://
   data-y2='400'
   data-min-width= '200'
   data-min-height= '200'
-  boxWidth= '800'
-  boxHeight= '600'
+  data-box-width= '800'
+  data-box-height= '600'
   data-image-src="imageSrc"
   data-result='imageCropResult'
 ></yoolk-image-crop>
