@@ -13,7 +13,7 @@ AngularJS Directive which will allow you to crop an image using [Jcrop](https://
 ### Usage
 
 1. get [Jcrop](https://github.com/tapmodo/Jcrop) and include into your project
-2. Add the dependency : `angular.module('myApp',['YoolkImageCrop'])`
+2. Add the dependency : `angular.module('myApp',['yoolkImageCrop'])`
 3. Initiatlise the directive [see standalone CODEPEN](http://codepen.io/simleap/pen/gbMrxd) for example code.
 
 ### Parameters
