@@ -1,6 +1,6 @@
-angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
+angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function () {
   return {
-    template: "<img id=image-crop-{{rand}} src='{{imageSrc}}'></img>",
+    template: "<img id=image-crop-{{rand}} src='{{imageSrc}}' class='image-crop'></img>",
     replace: true,
     restrict: 'AE',
     scope: {
@@ -13,12 +13,13 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
       minHeight: '@',
       boxWidth: '@',
       boxHeight: '@',
-      result: '='
+      result: '=',
+      loading: '='
     },
-    link: function(scope, element, attributes) {
+    link: function (scope, element, attributes) {
       var showCoords;
       scope.rand = Math.round(Math.random() * 99999);
-      showCoords = function(c) {
+      showCoords = function (c) {
         scope.result.x = c.x;
         scope.result.y = c.y;
         scope.result.x2 = c.x2;
@@ -27,6 +28,11 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
         scope.result.h = c.h;
         return scope.$apply();
       };
+
+      $('.image-crop').load(function () {
+        scope.loading = false;
+      });
+
       return element.Jcrop({
         onChange: showCoords,
         minSize: [scope.minWidth, scope.minHeight],
@@ -34,7 +40,7 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
         boxHeight: scope.boxHeight,
         allowSelect: false,
         aspectRatio: scope.minWidth / scope.minHeight
-      }, function() {
+      }, function () {
         var jcrop_api;
         jcrop_api = this;
         return jcrop_api.animateTo([scope.x, scope.y, scope.x2, scope.y2]);
@@ -42,4 +48,3 @@ angular.module('yoolkImageCrop', []).directive('yoolkImageCrop', function() {
     }
   };
 });
-
